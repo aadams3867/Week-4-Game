@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+}
+body {
+	background-image: url("../images/Nature-AT-AT.jpg");
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-size: 24px;
+	line-height: 150%;
+	font-family: Arial, sans-serif;
+	color: #fff;
+}
+
+h1 {
+	font-weight: bold;
+}
+
+h4 {
+	font-style: italic;
+}
+
+h1, h4 {
+	color: #000;
+	text-align: center;
+}
+
+img {
+	border: 2px solid green;
+	background: white;
+	padding: 50px 20px;
+	caption-side: bottom;
+}
+
+.wrapper {
+	width: 1600px;
+	margin: 40px auto;
+	padding: 0 20px;
+}
+
+#droidDisplay {
+	position: relative;
+}
+
+.name {
+	position: absolute;
+	top: 48px;
+
+	background-color: black;
+	font-size: 16px;
+	text-align: center;
+}
+
+.stats {
+	position: absolute;
+	bottom: 2px;
+
+	background-color: black;
+	font-size: 16px;
+	text-align: center;
+}
+
+/* 	I had to specify exact px for each img label position because they were all different widths.
+	In a future update, I will either standardize the img size or use a clever workaround that I researched.
+
+*/
+
+#imgLabel_c3po {
+	width: 140px;
+	left: 2px;
+}
+
+#imgLabel_r2d2 {
+	width: 132px;
+	left: 146px;
+}
+
+#imgLabel_bb8 {
+	width: 147px;
+	left: 282px;
+}
+
+#imgLabel_sbd {
+	width: 143px;
+	left: 433px;
+}
+
