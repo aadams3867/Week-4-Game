@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+body {
+	background-image: url("../images/Nature-AT-AT.jpg");
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-size: 24px;
+	line-height: 150%;
+	font-family: Arial, sans-serif;
+	color: #fff;
+}
+
+h1 {
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+h4 {
+	font-style: italic;
+}
+
+h1, h4 {
+	color: #000;
+	text-align: center;
+}
+
+img {
+	border: 2px solid green;
+	background: white;
+	padding: 50px 20px;
+	caption-side: bottom;
+}
+
+.wrapper {
+	width: 1600px;
+	margin: 40px auto;
+	padding: 0 20px;
+}
+
+#droidDisplay, #heroDisplay, #duelersDisplay, #attackDisplay {
+	position: relative;
+	float: left;
+}
+
+#duelersDisplay, #attackDisplay {
+	clear: both;
+}
+
+.name {
+	position: absolute;
+	top: 48px;
+
+	width: 140px;
+	background-color: black;
+	font-size: 16px;
+	text-align: center;
+}
+
+.stats {
+	position: absolute;
+	bottom: 2px;
+
+	width: 140px;
+	background-color: black;
+	font-size: 16px;
+	text-align: center;
+}
+
+#c3po, #r2d2, #bb8, #sbd {
+	float: left;
+}
+
+.imgLabel_first {
+	left: 2px;
+}
+
+.imgLabel_second {
+	left: 146px;
+}
+
+.imgLabel_third {
+	left: 290px;
+}
+
+.imgLabel_fourth {
+	left: 434px;
+}
