@@ -13,10 +13,7 @@ body {
 
 h1 {
 	font-weight: bold;
-<<<<<<< HEAD
 	margin-top: 10px;
-=======
->>>>>>> 898ee69e5e481a3f7c0684b4f36fbc3e72efcba3
 }
 
 h4 {
@@ -41,7 +38,6 @@ img {
 	padding: 0 20px;
 }
 
-<<<<<<< HEAD
 #droidDisplay, #heroDisplay, #duelersDisplay, #attackDisplay {
 	position: relative;
 	float: left;
@@ -49,20 +45,13 @@ img {
 
 #duelersDisplay, #attackDisplay {
 	clear: both;
-=======
-#droidDisplay {
-	position: relative;
->>>>>>> 898ee69e5e481a3f7c0684b4f36fbc3e72efcba3
 }
 
 .name {
 	position: absolute;
 	top: 48px;
 
-<<<<<<< HEAD
 	width: 140px;
-=======
->>>>>>> 898ee69e5e481a3f7c0684b4f36fbc3e72efcba3
 	background-color: black;
 	font-size: 16px;
 	text-align: center;
@@ -72,16 +61,12 @@ img {
 	position: absolute;
 	bottom: 2px;
 
-<<<<<<< HEAD
 	width: 140px;
-=======
->>>>>>> 898ee69e5e481a3f7c0684b4f36fbc3e72efcba3
 	background-color: black;
 	font-size: 16px;
 	text-align: center;
 }
 
-<<<<<<< HEAD
 #c3po, #r2d2, #bb8, #sbd {
 	float: left;
 }
@@ -101,30 +86,3 @@ img {
 .imgLabel_fourth {
 	left: 434px;
 }
-=======
-/* 	I had to specify exact px for each img label position because they were all different widths.
-	In a future update, I will either standardize the img size or use a clever workaround that I researched.
-
-*/
-
-#imgLabel_c3po {
-	width: 140px;
-	left: 2px;
-}
-
-#imgLabel_r2d2 {
-	width: 132px;
-	left: 146px;
-}
-
-#imgLabel_bb8 {
-	width: 147px;
-	left: 282px;
-}
-
-#imgLabel_sbd {
-	width: 143px;
-	left: 433px;
-}
-
->>>>>>> 898ee69e5e481a3f7c0684b4f36fbc3e72efcba3
