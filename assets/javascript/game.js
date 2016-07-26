@@ -1,22 +1,29 @@
+$(document).ready(function() {
+
 // Declare the object
 var starwars = {
-	droidSelected: "",									// Player has not yet chosen a hero droid
-	droidsArray: ["c3po", "r2d2", "bb8", "sbd"],		// Total number of droids is 4
+	droidSelected: "",
+	droidsArray: [],
 
-	oppSelected: "",									// Player has not yet chosen an opponent to duel
-	matchOver: false,									// Current match is not over
-	gameOver: false										// Game is not over	
+	oppSelected: "",
+	matchOver: false,
+	gameWinner: "",
+	setup: function() {
+		// Initialize game variables
+		this.droidSelected = "";								// Player has not yet chosen a hero droid
+		this.droidsArray = ["c3po", "r2d2", "bb8", "sbd"];		// Initial playable droids
+		this.oppSelected = "";									// Player has not yet chosen an opponent to duel
+		this.matchOver = false;									// Current match is not over
+		this.gameWinner = "";									// Game is not over
+
+		$('#heroDisplay, #duelersDisplay, #attackDisplay, #oppDisplay, #resultsDisplay, #quoteDisplay').empty();
+	}
 };
 
-setup();
-console.log(this.droidSelected + " " + this.droidsArray);
+starwars.setup();
+console.log(starwars.droidSelected + " and " + starwars.droidsArray);
+startScreen();
 
-
-/*$.when( pickHero() ).done(function(){
-	pickOpponent();
-});*/
-
-//pickOpponent();
 
 
 
@@ -25,48 +32,41 @@ console.log(this.droidSelected + " " + this.droidsArray);
 // ** Fresh game **
 // 
 
-function setup() {
-	// Initialize game variables
-	this.droidSelected = "";
-	this.droidsArray = ["c3po", "r2d2", "bb8", "sbd"];
-	this.oppSelected = "";
-	this.matchOver = false;
-	this.gameWinner = "";
-
-	// Display the Start Screen
+function startScreen() {
+	// Display the Start Screen in #droidDisplay div
 	$("#droidDisplay").prepend("<p>Pick your droid to begin:</p>");
-	$("#c3po").append("<span class='name imgLabel_first'>C-3PO</span><img src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
-	$("#r2d2").append("<span class='name imgLabel_second'>R2-D2</span><img src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_second'>HP: 100</span>");
-	$("#bb8").append("<span class='name imgLabel_third'>BB-8</span><img src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_third'>HP: 150</span>");
-	$("#sbd").append("<span class='name imgLabel_fourth'>Battle Droid</span><img src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_fourth'>HP: 180</span>");
+	$("#droid1").append("<span class='name imgLabel_first'>C-3PO</span><img src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
+	$("#droid2").append("<span class='name imgLabel_second'>R2-D2</span><img src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_second'>HP: 100</span>");
+	$("#droid3").append("<span class='name imgLabel_third'>BB-8</span><img src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_third'>HP: 150</span>");
+	$("#droid4").append("<span class='name imgLabel_fourth'>Battle Droid</span><img src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_fourth'>HP: 180</span>");
 }
 
-function pickHero() {
-	// Capture player's droid selection
+// Capture player's droid selection
 
-	
+$('#droid1').on('click', function() {
+	starwars.droidSelected = "c3po";
+	starwars.droidsArray = ["r2d2", "bb8", "sbd"];
+	opponentSetup();
+});
 
-	    $('#c3po').on('click', function() {
-	    	this.droidSelected = "c3po";
-	    	this.droidsArray = ["r2d2", "bb8", "sbd"];
-		});
+$('#droid2').on('click', function() {
+	starwars.droidSelected = "r2d2";
+	starwars.droidsArray = ["c3po", "bb8", "sbd"];
+	opponentSetup();
+});
 
-		$('#r2d2').on('click', function() {
-	    	this.droidSelected = "r2d2";
-			this.droidsArray = ["c3po", "bb8", "sbd"];	
-		});
+$('#droid3').on('click', function() {
+	starwars.droidSelected = "bb8";
+	starwars.droidsArray = ["c3po", "r2d2", "sbd"];
+	opponentSetup();
+});
 
-	    $('#bb8').on('click', function() {
-	    	this.droidSelected = "bb8";
-			this.droidsArray = ["c3po", "r2d2", "sbd"];
-		});
+$('#droid4').on('click', function() {
+	starwars.droidSelected = "sbd";
+	starwars.droidsArray = ["c3po", "r2d2", "bb8"];
+	opponentSetup();
+});
 
-	    $('#sbd').on('click', function() {
-	    	this.droidSelected = "sbd";
-			this.droidsArray = ["c3po", "r2d2", "bb8"];
-		});
-
-}
 
 function opponentSetup() {
 
@@ -75,57 +75,87 @@ function opponentSetup() {
 
 	$("#heroDisplay").prepend("<p>Your droid:</p>");
 
-	if (this.droidSelected == "c3po") {
+	if (starwars.droidSelected == "c3po") {
 		$("#heroDisplay").append("<span class='name imgLabel_first'>C-3PO</span><img src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
-	} else if (this.droidSelected == "r2d2") {
+	} else if (starwars.droidSelected == "r2d2") {
 		$("#heroDisplay").append("<span class='name imgLabel_first'>R2-D2</span><img src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_first'>HP: 100</span>");
-	} else if (this.droidSelected == "bb8") {
+	} else if (starwars.droidSelected == "bb8") {
 		$("#heroDisplay").append("<span class='name imgLabel_first'>BB-8</span><img src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_first'>HP: 150</span>");
-	} else { // (this.droidSelected == "sbd")
+	} else { // (starwars.droidSelected == "sbd")
 		$("#heroDisplay").append("<span class='name imgLabel_first'>Battle Droid</span><img src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_first'>HP: 180</span>");
 	}
 
 	// Adding a selection of Opponents to duel
-	// Placeholder code, this part still broken (incorrect pictures displaying)
 	$("#duelersDisplay").prepend("<p>Opponents Available to Duel:</p>");
 
-	if (this.droidsArray.length == 3) {
-		$("#opp1").append("<span class='name imgLabel_first'>C-3PO</span><img src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
-		$("#opp2").append("<span class='name imgLabel_second'>R2-D2</span><img src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_second'>HP: 100</span>");
-		$("#opp3").append("<span class='name imgLabel_third'>BB-8</span><img src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_third'>HP: 150</span>");
-	} else if (this.droidsArray.length == 2) {
-		$("#opp1").append("<span class='name imgLabel_first'>C-3PO</span><img src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
-		$("#opp2").append("<span class='name imgLabel_second'>R2-D2</span><img src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_second'>HP: 100</span>");
-	} else {
-		$("#opp1").append("<span class='name imgLabel_first'>C-3PO</span><img src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
+	console.log(starwars.droidSelected + " and " + starwars.droidsArray + " and " + starwars.droidsArray.length);
+
+	// Opponent Choice #1						1, 2, or 3 possible opponents
+	if (starwars.droidsArray[0] == "c3po") {
+		$("#duelersDisplay #dueler1").append("<span class='name imgLabel_first'>C-3PO</span><img id='dueler1' value='c3po' src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_first'>HP: 120</span>");
+	} else if (starwars.droidsArray[0] == "r2d2") {
+		$("#duelersDisplay").append("<span class='name imgLabel_first'>R2-D2</span><img id='dueler1' value='r2d2' src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_first'>HP: 100</span>");
+	} else if (starwars.droidsArray[0] == "bb8") {
+		$("#duelersDisplay").append("<span class='name imgLabel_first'>BB-8</span><img id='dueler1' value='bb8' src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_first'>HP: 150</span>");
+	} else {	// starwars.droidsArray[0] == "sbd"
+		$("#duelersDisplay").append("<span class='name imgLabel_first'>Battle Droid</span><img id='dueler1' value='sbd' src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_first'>HP: 180</span>");
 	}
 
-//$("#sbd").append("<span class='name imgLabel_fourth'>Battle Droid</span><img src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_fourth'>HP: 180</span>");
+	if (starwars.droidsArray.length > 1) {		// 2 or 3 possible opponents
+	// Opponent Choice #2
+		if (starwars.droidsArray[1] == "c3po") {
+			$("#duelersDisplay").append("<span class='name imgLabel_second'>C-3PO</span><img id='dueler2' value='c3po' src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_second'>HP: 120</span>");
+		} else if (starwars.droidsArray[1] == "r2d2") {
+			$("#duelersDisplay").append("<span class='name imgLabel_second'>R2-D2</span><img id='dueler2' value='r2d2' src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_second'>HP: 100</span>");
+		} else if (starwars.droidsArray[1] == "bb8") {
+			$("#duelersDisplay").append("<span class='name imgLabel_second'>BB-8</span><img id='dueler2' value='bb8' src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_second'>HP: 150</span>");
+		} else {	// starwars.droidsArray[1] == "sbd"
+			$("#duelersDisplay").append("<span class='name imgLabel_second'>Battle Droid</span><img id='dueler2' value='sbd' src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_second'>HP: 180</span>");
+		}
+	}
 
+	if (starwars.droidsArray.length > 2) {		// 3 possible opponents
+	// Opponent Choice #3
+		if (starwars.droidsArray[2] == "c3po") {
+			$("#duelersDisplay").append("<span class='name imgLabel_third'>C-3PO</span><img id='dueler3' value='c3po' src='assets/images/c-3po-lego.jpg' alt='Pic of C-3PO'/><span class='stats imgLabel_third'>HP: 120</span>");
+		} else if (starwars.droidsArray[2] == "r2d2") {
+			$("#duelersDisplay").append("<span class='name imgLabel_third'>R2-D2</span><img id='dueler3' value='r2d2' src='assets/images/r2-d2.jpg' alt='Pic of R2-D2'/><span class='stats imgLabel_third'>HP: 100</span>");
+		} else if (starwars.droidsArray[2] == "bb8") {
+			$("#duelersDisplay").append("<span class='name imgLabel_third'>BB-8</span><img id='dueler3' value='bb8' src='assets/images/bb-8.jpg' alt='Pic of BB-8'/><span class='stats imgLabel_third'>HP: 150</span>");
+		} else {	// starwars.droidsArray[2] == "sbd"
+			$("#duelersDisplay").append("<span class='name imgLabel_third'>Battle Droid</span><img id='dueler3' value='sbd' src='assets/images/super-battle-droid.jpg' alt='Pic of Super Battle Droid'/><span class='stats imgLabel_third'>HP: 180</span>");
+		}
+	}
 }
 
-function pickOpponent() {
-	//Capture player's opponent selection
+//Capture player's opponent selection
 
-	    $('#opp1').on('click', function() {
-	    	this.oppSelected = "c3po";
-	    	this.droidsArray = ["r2d2", "bb8", "sbd"];
-		});
-
-		$('#opp2').on('click', function() {
-	    	this.oppSelected = "r2d2";
-			this.droidsArray = ["c3po", "bb8", "sbd"];	
-		});
-
-	    $('#opp3').on('click', function() {
-	    	this.oppSelected = "bb8";
-			this.droidsArray = ["c3po", "r2d2", "sbd"];
-		});
-
-}
+$('#duelersDisplay').on('click', function() {
+	console.log("Dueler 1 selected!");
 
 
-function battleSetup() {
+/*	starwars.oppSelected = $(this).value();
+	$.grep(starwars.droidsArray, function(n,i) {
+		return n != starwars.oppSelected;
+	});
+	console.log("Dueler 1 selected!");
+	console.log("starwars.oppSelected: " + starwars.oppSelected + " starwars.droidsArray: " + starwars.droidsArray);
+});
+
+$('#dueler2').on('click', function() {
+	starwars.oppSelected = $(this).value();
+	starwars.droidsArray = ["c3po", "bb8", "sbd"];	
+});
+
+$('#dueler3').on('click', function() {
+	starwars.oppSelected = $(this).value();
+	starwars.droidsArray = ["c3po", "r2d2", "sbd"];*/
+});
+
+
+
+
+/*function battleSetup() {
 	// Change html to reflect player's opponent selection
 	$("#duelersDisplay").empty();
 
@@ -222,4 +252,9 @@ function gameOver() {
 			.append("<button id='restart'>Restart</button>");		
 	}
 
-}
+}*/
+
+
+
+
+})

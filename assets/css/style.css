@@ -1,10 +1,17 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+	height: 100%;
+	overflow: hidden;
+}
+
 body {
 	background-image: url("../images/Nature-AT-AT.jpg");
 	background-repeat: no-repeat;
 	background-position: center top;
+	min-height: 100%;
 	font-size: 24px;
 	line-height: 150%;
 	font-family: Arial, sans-serif;
@@ -29,25 +36,27 @@ img {
 	border: 2px solid green;
 	background: white;
 	padding: 50px 20px;
-	caption-side: bottom;
+	/*caption-side: bottom;*/
 }
 
 .wrapper {
 	width: 1600px;
+	min-height: 100%;
+	overflow: hidden;
 	margin: 40px auto;
 	padding: 0 20px;
 }
 
-#droidDisplay, #heroDisplay, #duelersDisplay, #attackDisplay {
+#droidDisplay, #heroDisplay, #duelersDisplay, #attackDisplay, #oppDisplay, #resultsDisplay, #quoteDisplay {
 	position: relative;
 	float: left;
 }
 
-#duelersDisplay, #attackDisplay {
+#duelersDisplay, #attackDisplay, #oppDisplay, #resultsDisplay, #quoteDisplay {
 	clear: both;
 }
 
-.name {
+.name { 				/* Top img label */
 	position: absolute;
 	top: 48px;
 
@@ -57,7 +66,7 @@ img {
 	text-align: center;
 }
 
-.stats {
+.stats {				/* Bottom img label */
 	position: absolute;
 	bottom: 2px;
 
@@ -67,8 +76,24 @@ img {
 	text-align: center;
 }
 
-#c3po, #r2d2, #bb8, #sbd {
+#droid1, #droid2, #droid3, #droid4, #dueler1, #dueler2, #dueler3 {
 	float: left;
+}
+
+#c3po {
+
+}
+
+#r2d2 {
+
+}
+
+#bb8 {
+
+}
+
+#sbd {
+
 }
 
 .imgLabel_first {
